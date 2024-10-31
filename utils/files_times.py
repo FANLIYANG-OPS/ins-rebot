@@ -25,22 +25,23 @@ def get_title_and_hashtags(filename):
 
     # 获取视频标题和 hashtag txt 文件名
     txt_filename = filename.replace(".mp4", ".txt")
-
+    title = 'speak now: '
+    hashtags = '搞笑 音乐 '
     try:
-
         # 读取 txt 文件
         with open(txt_filename, "r", encoding="utf-8") as f:
             content = f.read()
-
         # 获取标题和 hashtag
         splite_str = content.strip().split("\n")
-        title = splite_str[0]
-        hashtags = splite_str[1].replace("#", "").split(" ")
-
+        for s in splite_str:
+            if s.startswith('#'):
+                hashtags += splite_str[1].replace("#", "").split(" ")
+            else:
+                title += s
         return title, hashtags
     except Exception as e:
-        return 'speak now' , 'kanye'
- 
+        return title, hashtags
+
 
 def generate_schedule_time_next_day(total_videos, videos_per_day, daily_times=None, timestamps=False, start_days=0):
     """
@@ -64,7 +65,8 @@ def generate_schedule_time_next_day(total_videos, videos_per_day, daily_times=No
         daily_times = [6, 11, 14, 16, 22]
 
     if videos_per_day > len(daily_times):
-        raise ValueError("videos_per_day should not exceed the length of daily_times")
+        raise ValueError(
+            "videos_per_day should not exceed the length of daily_times")
 
     # Generate timestamps
     schedule = []

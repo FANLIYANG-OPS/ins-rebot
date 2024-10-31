@@ -13,6 +13,7 @@ from utils.files_times import generate_schedule_time_next_day, get_title_and_has
 
 
 if __name__ == '__main__':
+    
     # 1.清理原视频目录
     vedio_path = 'videos'
     shutil.rmtree(vedio_path)

@@ -1,0 +1,2 @@
+2024-10-31 09:03:41.771 | INFO     | uploader.tencent_uploader.main:weixin_setup:79 - [+] cookie文件不存在或已失效，即将自动打开浏览器，请扫码登录，登陆后会自动生成cookie文件
+2024-10-31 09:05:27.591 | SUCCESS  | uploader.tencent_uploader.main:cookie_auth:48 - [+] cookie 有效

@@ -12,6 +12,20 @@ def get_absolute_path(relative_path: str, base_dir: str = None) -> str:
     return str(absolute_path)
 
 
+def get_vedio_name(filename):
+    # 获取视频标题和 hashtag txt 文件名
+    txt_filename = filename.replace(".mp4", ".txt")
+    try:
+        # 读取 txt 文件
+        with open(txt_filename, "r", encoding="utf-8") as f:
+            content = f.read()
+        # 获取标题和 hashtag
+        splite_str = content.strip().split("\n")
+        return splite_str[0]
+    except Exception as e:
+        return 'tencent_vedio'
+
+
 def get_title_and_hashtags(filename):
     """
   获取视频标题和 hashtag
